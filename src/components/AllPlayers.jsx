@@ -21,7 +21,6 @@ export default function AllPlayers() {
 					<div key={player.id} className='playerCard'>
 						<img src={player.imageUrl} alt='' />
 						<h2>{player.name}</h2>
-						<p>{player.breed}</p>
 						<button onClick={() => navigate(`/${player.id}`)}>Details</button>
 					</div>
 				);

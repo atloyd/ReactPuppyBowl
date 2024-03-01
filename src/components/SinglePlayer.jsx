@@ -22,7 +22,9 @@ export default function SinglePlayer() {
 				<img src={singlePlayer.imageUrl} alt='' />
 				<h2>{singlePlayer.name}</h2>
 				<p>{singlePlayer.breed}</p>
+				<p>Status: {singlePlayer.status}</p>
 				<button onClick={() => navigate('/')}>Return</button>
+				<button>Delete</button>
 			</div>
 		</div>
 	);
