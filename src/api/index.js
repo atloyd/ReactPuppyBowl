@@ -20,12 +20,15 @@ export async function fetchSinglePlayer(playerId) {
 	}
 }
 
-export async function addNewPlayer() {
+export async function addNewPlayer(name, breed, team) {
 	try {
 		const response = await fetch(`${API}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({}),
+			name: name.value,
+			breed: breed.value,
+			team: team.value,
 		});
 
 		const json = await response.json();
