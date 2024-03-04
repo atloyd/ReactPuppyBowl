@@ -14,11 +14,11 @@ export default function NewPlayerForm() {
 
 		try {
 			await addNewPlayer(newPlayer);
+			setName('');
+			setBreed('');
 		} catch (error) {
 			console.error(error.message);
 		}
-		setName('');
-		setBreed('');
 	}
 	return (
 		<form onSubmit={handleSubmit}>
@@ -37,7 +37,9 @@ export default function NewPlayerForm() {
 					value={breed}
 					onChange={(event) => setBreed(event.target.value)}
 				/>
-				<button type='submit' className='submitButton'>Submit</button>
+				<button type='submit' className='submitButton'>
+					Submit
+				</button>
 			</div>
 		</form>
 	);

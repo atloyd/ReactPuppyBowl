@@ -15,7 +15,7 @@ export default function AllPlayers() {
 		renderPlayers();
 	}, []);
 	return (
-		<div>
+		<div className='players'>
 			{players.map((player) => {
 				return (
 					<div key={player.id} className='playerCard'>

@@ -28,11 +28,12 @@ export default function SinglePlayer() {
 
 	return (
 		<div>
+			<h1>Player Details:</h1>
 			<div key={singlePlayer.id} className='playerCard'>
 				<img src={singlePlayer.imageUrl} alt='' />
 				<h2>{singlePlayer.name}</h2>
-				<p>{singlePlayer.breed}</p>
-				<p>Status: {singlePlayer.status}</p>
+				<h3>{singlePlayer.breed}</h3>
+				<h4>Status: {singlePlayer.status}</h4>
 				<button onClick={() => navigate('/')}>Return</button>
 				<button onClick={handleDelete}>Delete</button>
 			</div>
