@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { fetchSinglePlayer } from '../api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-// import { deletePlayer } from '../api';
+import { deletePlayer } from '../api';
 
 export default function SinglePlayer() {
 	const { id } = useParams();
@@ -15,7 +15,16 @@ export default function SinglePlayer() {
 			setSinglePlayers(player.player);
 		}
 		renderPlayers();
-	});
+	}, [id]);
+
+	async function handleDelete() {
+		try {
+			await deletePlayer(singlePlayer.id);
+			navigate('/');
+		} catch (error) {
+			console.error(error.message);
+		}
+	}
 
 	return (
 		<div>
@@ -25,7 +34,7 @@ export default function SinglePlayer() {
 				<p>{singlePlayer.breed}</p>
 				<p>Status: {singlePlayer.status}</p>
 				<button onClick={() => navigate('/')}>Return</button>
-				{/* <button onClick={deletePlayer(singlePlayer.id)}>Delete</button> */}
+				<button onClick={handleDelete}>Delete</button>
 			</div>
 		</div>
 	);
