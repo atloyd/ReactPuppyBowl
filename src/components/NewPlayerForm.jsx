@@ -1,15 +1,44 @@
-import { addNewPlayer } from "../api";
+import { addNewPlayer } from '../api';
+import { useState } from 'react';
 
 export default function NewPlayerForm() {
-    return <div className="form">
-        <form action="submit">
-            <label>Name: </label>
-            <input type="text" placeholder="Name"/>
-            <label>Breed: </label>
-            <input type="text" placeholder="Breed"/>
-            <label>Team: </label>
-            <input type="text" placeholder="Team"/>
-            <button onClick={addNewPlayer} >Submit</button>
-        </form>
-    </div>
+	const [name, setName] = useState('');
+	const [breed, setBreed] = useState('');
+
+	async function handleSubmit(event) {
+		event.preventDefault();
+		const newPlayer = {
+			name: name,
+			breed: breed,
+		};
+
+		try {
+			await addNewPlayer(newPlayer);
+		} catch (error) {
+			console.error(error.message);
+		}
+		setName('');
+		setBreed('');
+	}
+	return (
+		<form onSubmit={handleSubmit}>
+			<div>
+				<label htmlFor='name'>Name: </label>
+				<input
+					type='text'
+					id='name'
+					value={name}
+					onChange={(event) => setName(event.target.value)}
+				/>
+				<label htmlFor='breed'>Breed: </label>
+				<input
+					type='text'
+					id='breed'
+					value={breed}
+					onChange={(event) => setBreed(event.target.value)}
+				/>
+				<button type='submit' className='submitButton'>Submit</button>
+			</div>
+		</form>
+	);
 }

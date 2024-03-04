@@ -28,7 +28,7 @@ button{
   margin-right: 10px;
 }
 
-form > input{
+input{
   height: 25px;
   font-size: 20px;
   margin: 10px;
@@ -38,7 +38,6 @@ form{
   font-size: 25px;
 }
 
-form > button{
-  height: 45px;
+.submitButton{
   font-size: medium;
 }
